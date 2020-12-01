@@ -1,9 +1,6 @@
-from utils import answer1, answer2
+from utils import answer1, answer2, get_input
 
-values = []
-with open("day_01_input") as fp:
-    for line in fp:
-        values.append(int(line.strip()))
+values = [int(line) for line in get_input("day_01_input")]
 
 for index, value in enumerate(values):
     for value2 in values[index + 1:]:
