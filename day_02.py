@@ -1,6 +1,9 @@
 from collections import Counter
 from utils import answer1, answer2, get_input
 
+ANSWER1 = None
+ANSWER2 = None
+
 valid_count = 0
 for line in get_input("day_02_input"):
     char_range, char, password = line.split()
@@ -11,7 +14,7 @@ for line in get_input("day_02_input"):
     if min_count <= Counter(password)[char] <= max_count:
         valid_count += 1
 
-answer1(valid_count)
+ANSWER1 = answer1(valid_count)
 
 valid_count = 0
 for line in get_input("day_02_input"):
@@ -20,10 +23,9 @@ for line in get_input("day_02_input"):
     index_two = int(char_indexes.split("-")[1]) - 1
     char = char[0]
 
-    if (
-        (password[index_one] == char and password[index_two] != char)
-        or (password[index_one] != char and password[index_two] == char)
+    if (password[index_one] == char and password[index_two] != char) or (
+        password[index_one] != char and password[index_two] == char
     ):
         valid_count += 1
 
-answer2(valid_count)
+ANSWER2 = answer2(valid_count)

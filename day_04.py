@@ -1,6 +1,10 @@
 import re
 from utils import answer1, answer2, get_input
 
+ANSWER1 = None
+ANSWER2 = None
+
+
 def passport_string_to_dict(passport_string):
     result = {}
     for item in passport_string.split():
@@ -8,6 +12,7 @@ def passport_string_to_dict(passport_string):
         result[key] = value
 
     return result
+
 
 passports = []
 passport = ""
@@ -29,7 +34,7 @@ for passport in passports:
     if len(passport) == 8 or (len(passport) == 7 and "cid" not in passport):
         valid_count += 1
 
-answer1(valid_count)
+ANSWER1 = answer1(valid_count)
 
 valid_count = 0
 for passport in passports:
@@ -60,7 +65,7 @@ for passport in passports:
             continue
 
     hair_color = passport.get("hcl", "#")
-    if re.fullmatch(r"#[0-9a-f]{6}" , hair_color) is None:
+    if re.fullmatch(r"#[0-9a-f]{6}", hair_color) is None:
         continue
 
     eye_color = passport.get("ecl", "")
@@ -68,9 +73,9 @@ for passport in passports:
         continue
 
     pid = passport.get("pid", "")
-    if re.fullmatch(r"[0-9]{9}" , pid) is None:
+    if re.fullmatch(r"[0-9]{9}", pid) is None:
         continue
 
     valid_count += 1
 
-answer2(valid_count)
+ANSWER2 = answer2(valid_count)
