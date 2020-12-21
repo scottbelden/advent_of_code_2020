@@ -65,10 +65,6 @@ def evaluate_line(chars):
         elif char == "+":
             op = add
             continue
-        elif char == "(":
-            numeral = evaluate_line(chars)
-        elif char == ")":
-            return total
         else:
             number_string = char
             while next_int := get_int(chars):
@@ -87,7 +83,7 @@ total = 0
 for line in lines:
     compact = line.replace(" ", "")
     while m := re.search(r"\([+*0-9]*?\)", compact):
-        value = evaluate_line(StringIO(m.group()))
+        value = evaluate_line(StringIO(m.group()[1:-1]))
         compact = compact.replace(m.group(), str(value))
 
     total += evaluate_line(StringIO(compact))
