@@ -22,6 +22,7 @@ import day_21
 import day_22
 import day_23
 import day_24
+import day_25
 
 
 def test_day_01():
@@ -142,3 +143,7 @@ def test_day_23():
 def test_day_24():
     assert day_24.ANSWER1 == 360
     assert day_24.ANSWER2 == 3924
+
+
+def test_day_25():
+    assert day_25.ANSWER1 == 296776
